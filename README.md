@@ -1,4 +1,4 @@
-# Predicting Electrodermal Activity from Facial Expresssion Analysis
+# Predicting Electrodermal Activity from Facial Expression Analysis
 
 ## 📝 Introduction
 
