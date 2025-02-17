@@ -1,0 +1,60 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "facial_expression_analysis_eda"
+version = "1.0.0"
+description = "Facial expression analysis for ElectroDermal Activity (EDA) prediction using deep learning models"
+authors = [
+  { name = "Elena Del Governatore", email = "eledelgo@gmail.com" },
+]
+
+keywords = ["computer vision", "deep learning", "physiological signals", "EDA prediction", "facial expression analysis"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Researchers",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+]
+readme = "README.md"
+requires-python = ">=3.10.9"
+dynamic = ["dependencies", "optional-dependencies"]
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
+
+[tool.setuptools.dynamic.optional-dependencies]
+dev = {file = ['requirements_dev.txt']}
+test = {file = ['requirements_test.txt']}
+
+[tool.ruff]
+line-length = 120
+exclude = ["myenv", "data", "__pycache__"]
+
+[tool.ruff.lint]
+select = ["I", "N", "E", "W", "F", "C90"]
+ignore = ["E501"]
+
+[tool.coverage.run]
+omit = ["tests/*", "myenv/*", "data/*", "documents/*"]
+
+[tool.coverage.report]
+show_missing = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "--maxfail=3 --disable-warnings"
+
+[tool.black]
+line-length = 120
+skip-string-normalization = true
+
+[tool.mypy]
+python_version = "3.10.9"
+ignore_missing_imports = true
+
+[tool.isort]
+profile = "black"
+known_first_party = ["src"]
